@@ -114,12 +114,14 @@ public class MemoryGame extends JFrame implements ActionListener
 	}*/
 
 
-	/*public void Match(int card1, int card2)
+	public void Match(int card1, int card2)
 	{
 		if((initialPack.Type(card1).equals(initialPack.Type(card2))))
 		{
 			JButtonMatch(card1, card2); 
 		}
+		//initialPack.reset(card1);
+		//initialPack.reset(card2);
 	}
 	
 	
@@ -131,7 +133,7 @@ public class MemoryGame extends JFrame implements ActionListener
 		buttons.get(flipped2).setBackground(Color.BLACK);
 		buttons.get(flipped2).setIcon(null);
 		
-	}*/
+	}
 	
 
 	public void actionPerformed(ActionEvent e)
@@ -148,6 +150,7 @@ public class MemoryGame extends JFrame implements ActionListener
 
 	public void CardSelection(ActionEvent e)
 	{
+		//cardPick++;
 		
 		if(e.getSource() == one)
 		{
@@ -227,7 +230,7 @@ public class MemoryGame extends JFrame implements ActionListener
 		{
 			
 			
-			for(int i = 0; i < buttons.size(); i++)
+		/*	for(int i = 0; i < buttons.size(); i++)
 			{
 				for(int j = 0; j < buttons.size(); j++)
 				{
@@ -235,20 +238,24 @@ public class MemoryGame extends JFrame implements ActionListener
 					buttons.get(j).setIcon(null);
 				}
 			}
+		*/	
 			
 			
 			
-			
-			/*for(int i = 0; i < initialPack.Size(); i++)
+			for(int i = 0; i < initialPack.Size(); i++)
 			{
 				for(int j = 0; j < initialPack.Size(); j++)
 				{
-					if(initialPack.Flipped(i) == true && initialPack.Flipped(j) == true)
+					if (i != j) 
 					{
-						Match(i, j); 
+						if(initialPack.Flipped(i) == true && initialPack.Flipped(j) == true)
+						{
+							Match(i, j);
+							
+						}
 					}
 				}
-			}*/ 
+			} 
 			
 		
 			

@@ -8,7 +8,7 @@ public abstract class Animal
 	protected BufferedImage img; 
 	protected ImageIcon icon; 
 	protected String type; 
-	protected boolean flipped; 
+	protected boolean flipped = false; 
 	
 	public Animal()
 	{
@@ -17,11 +17,15 @@ public abstract class Animal
 		this.type = null; 
 	}
 	
-	public void setFlipped(boolean flipped)
+	public void setFlipped()
 	{
-		this.flipped = flipped; 
+		this.flipped = true; 
 	}
 	
+	public void resetFlipped()
+	{
+		this.flipped = false;
+	}
 	
 	public boolean getFlipped()
 	{

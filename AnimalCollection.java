@@ -31,7 +31,7 @@ public class AnimalCollection
   
   public void setFlip(int position)
   {
-	  AnimalPack.get(position).setFlipped(true);
+	  AnimalPack.get(position).setFlipped();
   }
   
   
@@ -40,6 +40,10 @@ public class AnimalCollection
 	  return AnimalPack.get(position).getFlipped(); 
   }
   
+  public void reset(int position)
+  {
+	  AnimalPack.get(position).resetFlipped();
+  }
 
   public String Type(int position)
   {
