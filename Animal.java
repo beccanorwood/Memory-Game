@@ -2,13 +2,19 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-public abstract class Animal
+interface Equal
 {
+	boolean Equals(Animal a);
 	
+}
+
+public abstract class Animal implements Equal
+{
+
 	protected BufferedImage img; 
 	protected ImageIcon icon; 
 	protected String type; 
-	protected boolean flipped; 
+	protected boolean flipped = false; 
 	
 	public Animal()
 	{
@@ -17,33 +23,42 @@ public abstract class Animal
 		this.type = null; 
 	}
 	
-	public void setFlipped(boolean flipped)
+	public void setFlipped()
 	{
-		this.flipped = flipped; 
+		this.flipped = true; 
 	}
 	
+	public void resetFlipped()
+	{
+		this.flipped = false;
+	}
 	
 	public boolean getFlipped()
 	{
 		return flipped; 
 	}
 	
-	
-	public boolean equals(Object other)
+	@Override
+	public boolean Equals(Animal a)
 	{
-		if (this.getClass() == other.getClass())
+		boolean same; 
+		
+		if(this.Type().equals(a.Type()))
 		{
-			return true;
+			same = true; 
 		}
 		else
 		{
-			return false; 
+			same = false; 
 		}
+		
+		return same; 
 	}
-
-
-	public abstract Icon Image(); 
-	public abstract String Type();
+	
+	
+	
+	protected abstract Icon Image(); 
+	protected abstract String Type();
 
  
 }

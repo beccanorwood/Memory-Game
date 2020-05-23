@@ -3,25 +3,36 @@ import javax.swing.Icon;
 
 public class AnimalCollection
 {
-  ArrayList<Animal> AnimalPack = new ArrayList<Animal>(6);
 
-  public AnimalCollection()
+	ArrayList<Animal> AnimalPack = new ArrayList<Animal>(6);
+	public static final int ANIMAL_SIZE = 6; 
+	
+	
+	public AnimalCollection()
+	{
+		super();
+	}
+  
+  
+  public void addAnimals(int row, int col)
   {
-	  AnimalPack.add(new SnowLeopard());
-	  AnimalPack.add(new SnowLeopard());
-	  AnimalPack.add(new Puppy()); 
-	  AnimalPack.add(new Puppy());
-	  AnimalPack.add(new Giraffe());
-	  AnimalPack.add(new Giraffe()); 
-	  AnimalPack.add(new Penguin());
-	  AnimalPack.add(new Penguin()); 
-	  AnimalPack.add(new Tiger());
-	  AnimalPack.add(new Tiger());
-	  AnimalPack.add(new Otter());
-	  AnimalPack.add(new Otter()); 
 	  
-	  this.Randomize();
+	  int numofAnimals = row * col; 
+	  int loopincrement = numofAnimals / ANIMAL_SIZE;
+	  
+	  
+	  for(int i = 0; i < loopincrement; i++)
+	  {
+		  AnimalPack.add(new SnowLeopard());
+		  AnimalPack.add(new Puppy());
+		  AnimalPack.add(new Giraffe()); 
+		  AnimalPack.add(new Penguin()); 
+		  AnimalPack.add(new Tiger());
+		  AnimalPack.add(new Otter());
+	  }
+	  
 
+	  this.Randomize(); 
   }
   
   public int Size()
@@ -29,9 +40,10 @@ public class AnimalCollection
 	  return AnimalPack.size(); 
   }
   
+  
   public void setFlip(int position)
   {
-	  AnimalPack.get(position).setFlipped(true);
+	  AnimalPack.get(position).setFlipped();
   }
   
   
@@ -40,13 +52,16 @@ public class AnimalCollection
 	  return AnimalPack.get(position).getFlipped(); 
   }
   
+  public void reset(int position)
+  {
+	  AnimalPack.get(position).resetFlipped();
+  }
 
   public String Type(int position)
   {
 	  return AnimalPack.get(position).Type(); 
   }
   
-
   public int Position(int position)
   {
 	  return position; 
@@ -60,6 +75,15 @@ public class AnimalCollection
   public void Randomize()
   {
     Collections.shuffle(AnimalPack); 
+  }
+
+  public boolean equals(int position1, int position2) 
+  {
+	  
+	 boolean equal = AnimalPack.get(position1).Equals(AnimalPack.get(position2)); 
+	
+	  return equal; 
+	  
   }
 
 }
